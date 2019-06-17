@@ -11,7 +11,7 @@ export class UserResolver implements Resolve<FirebaseUserModel> {
   resolve(route: ActivatedRouteSnapshot) : Promise<FirebaseUserModel> {
 
     let user = new FirebaseUserModel();
-
+    
     return new Promise((resolve, reject) => {
       this.userService.getCurrentUser()
       .then(res => {
