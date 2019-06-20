@@ -1,20 +1,24 @@
-<div class="left">
-  <div class="form-inline">
-    <div class="form-group mb-2">
-      Name:
-      <input type="text" class="form-control form-control-plaintext" placeholder="Name" #name>
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-      Url:
-      <input type="text" class="form-control form-control-plaintext" placeholder="Url" #url>
-    </div>
-    <div class="form-group mx-sm-3 mb-2">
-      <button class="btn btn-primary"(click)="addTutorial(name.value,url.value)">Add a Tutorial</button>
-    </div>
-  </div>
+<div>
+    <div class="container h-100  p-3 mb-5 bg-white rounded">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="card-group shadow">
+                <div class="card bg-default">
+                  <div class="card-body">
+                      <div class="col-12">
+                          <div class="form-group form-inline ">
+                            <div ><input type="text" class="form-control" placeholder="Name" #name></div>
+                            <div ><input type="text" class="form-control" placeholder="Url" #url></div>
+                            <div ><button class="btn btn-primary"(click)="addTutorial(name.value,url.value)">Add values</button></div>
+                          </div>
+                      </div>  
+                  </div>
+                </div>
+              </div>
+        </div>  
+      </div>
   <br>
   <div class="right" *ngIf="tutorials">
-    <table class="table table-bordered table-dark">
+    <table class="table table-stripped">
       <thead>
         <tr>
           <th scope="col">Sl No</th>
