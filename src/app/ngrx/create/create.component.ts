@@ -11,9 +11,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-
-  constructor(private store: Store<AppState>) {}
-
+  tutorials: Observable<Tutorial[]>;
+  
+  constructor(private store: Store<AppState>) {
+    this.tutorials = store.select('tutorial');
+    
+  }
+  delTutorial(index) {
+    this.store.dispatch(new TutorialActions.RemoveTutorial(index) )
+  }
   addTutorial(name, url) {
     this.store.dispatch(new TutorialActions.AddTutorial({name: name, url: url}) )
   }

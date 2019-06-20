@@ -1,7 +1,37 @@
 <div class="left">
-
-  <input type="text" placeholder="name" #name>
-  <input type="text" placeholder="url" #url>
-
-  <button (click)="addTutorial(name.value,url.value)">Add a Tutorial</button>
+  <div class="form-inline">
+    <div class="form-group mb-2">
+      Name:
+      <input type="text" class="form-control form-control-plaintext" placeholder="Name" #name>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      Url:
+      <input type="text" class="form-control form-control-plaintext" placeholder="Url" #url>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <button class="btn btn-primary"(click)="addTutorial(name.value,url.value)">Add a Tutorial</button>
+    </div>
+  </div>
+  <br>
+  <div class="right" *ngIf="tutorials">
+    <table class="table table-bordered table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Sl No</th>
+          <th scope="col">Name</th>
+          <th scope="col">Url</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let tutorial of tutorials | async; let i = index">
+          <th scope="row">{{i}}</th>
+          <td>{{tutorial.name}}</td>
+          <td>{{tutorial.url}}</td>
+          <td><button class="btn btn-danger" (click)="delTutorial(i)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+

@@ -17,8 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducer } from './reducers/tutorial.reducers';
-import { ReadComponent } from './ngrx/read/read.component';
 import { CreateComponent } from './ngrx/create/create.component';
 
 @NgModule({
@@ -27,7 +27,6 @@ import { CreateComponent } from './ngrx/create/create.component';
     LoginComponent,
     UserComponent,
     RegisterComponent,
-    ReadComponent,
     CreateComponent
   ],
   imports: [
@@ -36,13 +35,14 @@ import { CreateComponent } from './ngrx/create/create.component';
     StoreModule.forRoot({
       tutorial: reducer
     }),
+    StoreDevtoolsModule.instrument({maxAge:25}),
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule // imports firebase/auth, only needed for auth features
     
   ],
-  providers: [AuthService, UserService, UserResolver, AuthGuard],
+  providers: [AuthService, UserService, UserResolver, AuthGuard,CreateComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
